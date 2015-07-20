@@ -31,20 +31,18 @@ public class PDF implements Format {
         image.scaleToFit(1100f, 150f);
         
         
-        PdfPTable table = new PdfPTable(3);
+        PdfPTable table = new PdfPTable(2);
         table.setWidthPercentage(90);
         table.setSpacingBefore(5f);
         table.setSpacingAfter(5f);
         PdfPCell cell;
-        cell = new PdfPCell(image);
-        cell.setColspan(3);
-        table.addCell(cell);
-        cell = new PdfPCell(new Phrase("Cell with rowspan 2"));
+        cell = new PdfPCell(image);        
         cell.setRowspan(2);
         table.addCell(cell);
-        
-        table.addCell("row 1; cell 2");
-        table.addCell("row 2; cell 1");
+        cell = new PdfPCell(new Phrase("Cell with rowspan 2"));        
+        table.addCell(cell);
+        cell = new PdfPCell(new Phrase("Cell with rowspan 2"));        
+        table.addCell(cell);
         document.add(table);
         
         

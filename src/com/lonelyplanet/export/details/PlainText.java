@@ -17,20 +17,22 @@ import java.util.logging.Logger;
  * @author Anand Gajjar
  */
 public class PlainText implements Format {
-
+    
     @Override
     public void generate(Alien alien) 
     {
         try 
         {
         PrintWriter writer = new PrintWriter("details.txt", "UTF-8");        
-        writer.println("-------------------------------------");
-        writer.println("|  Code Name       :  | " + alien.getCodeName()+"  |");
-        writer.println("|  Blood Color     :  | " + alien.getBloodColor()+"  |");
-        writer.println("|  Home Planet     :  | " + alien.getHomePlanet()+"  |");
-        writer.println("|  No. of Antennas :  | " + alien.getNoOfAntennas()+"  |");
-        writer.println("|  No. of Legs     :  | " + alien.getNoOfLegs()+"  |");        
-        writer.println("-------------------------------------");  
+        writer.println("---------------------------------------------------------------------------------");  
+        writer.println("|                                                                               |");
+        writer.println("---------------------------------------------------------------------------------");  
+        writer.println("|\tCode Name\t:  |  \t" + alien.getCodeName()+"      \t\t\t|");
+        writer.println("|\tBlood Color\t:  |  \t" + alien.getBloodColor()+"   \t\t\t|");
+        writer.println("|\tHome Planet\t:  | \t " + alien.getHomePlanet()+"    \t\t\t|");
+        writer.println("|\tNo. of Antennas\t:  |\t  " + alien.getNoOfAntennas()+" \t\t\t|");
+        writer.println("|\tNo. of Legs\t:  |  \t" + alien.getNoOfLegs()+"      \t\t\t|");        
+        writer.println("---------------------------------------------------------------------------------");  
         writer.close();        
         } catch (FileNotFoundException ex) {
             Logger.getLogger(PlainText.class.getName()).log(Level.SEVERE, null, ex);
