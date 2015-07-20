@@ -25,15 +25,12 @@ public class PlainText implements Format {
         {
         PrintWriter writer = new PrintWriter("details.txt", "UTF-8");        
         writer.println("-------------------------------------");
-//        writer.println("|  Name :  | " + alien.getName()+"  |");
-//        writer.println("|  Name :  | " + alien.getName()+"  |");
-//        writer.println("|  Name :  | " + alien.getName()+"  |");
-//        writer.println("|  Name :  | " + alien.getName()+"  |");
-//        writer.println("|  Name :  | " + alien.getName()+"  |");
-//        writer.println("|  Name :  | " + alien.getName()+"  |");
-//        writer.println("|  Name :  | " + alien.getName()+"  |");
-//        writer.println("-------------------------------------");
-  //      writer.println(alien.getPlanetName());
+        writer.println("|  Code Name       :  | " + alien.getCodeName()+"  |");
+        writer.println("|  Blood Color     :  | " + alien.getBloodColor()+"  |");
+        writer.println("|  Home Planet     :  | " + alien.getHomePlanet()+"  |");
+        writer.println("|  No. of Antennas :  | " + alien.getNoOfAntennas()+"  |");
+        writer.println("|  No. of Legs     :  | " + alien.getNoOfLegs()+"  |");        
+        writer.println("-------------------------------------");  
         writer.close();        
         } catch (FileNotFoundException ex) {
             Logger.getLogger(PlainText.class.getName()).log(Level.SEVERE, null, ex);

@@ -16,10 +16,10 @@ public class FormatFactory {
       if(shapeType == null){
          return null;
       }		
-      if(shapeType.equalsIgnoreCase("PDF")){
+      if(shapeType.equalsIgnoreCase("1")){
          return new PDF();
          
-      } else if(shapeType.equalsIgnoreCase("PlainText")){
+      } else if(shapeType.equalsIgnoreCase("2")){
          return new PlainText();
          
       }

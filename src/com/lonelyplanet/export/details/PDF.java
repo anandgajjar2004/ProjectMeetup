@@ -1,22 +1,14 @@
 package com.lonelyplanet.export.details;
 
-import com.itextpdf.text.BadElementException;
 import java.io.FileOutputStream;
-import java.io.IOException;
- 
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
-import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.lonelyplanet.pojo.Alien;
-import java.io.FileNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
  
 public class PDF implements Format {
     
