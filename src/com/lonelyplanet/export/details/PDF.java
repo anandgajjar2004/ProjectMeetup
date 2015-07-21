@@ -6,10 +6,12 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.lonelyplanet.pojo.Alien;
+import java.io.File;
  
 public class PDF implements Format {
     
@@ -33,18 +35,19 @@ public class PDF implements Format {
         PdfWriter.getInstance(document, new FileOutputStream("sample.pdf"));            
         document.open();
         
-         
-        Image image = Image.getInstance("src/com/lonelyplanet/export/details/header.jpg");            
-        image.scaleToFit(1000f, 150f);
-        
-        
+        File file = new File("src/com/lonelyplanet/export/details/header.jpg");
+	String filepath = file.getAbsolutePath();						    	  		    	 	
+                 
+        Image image = Image.getInstance(filepath);            
+        image.scaleToFit(1000f, 150f);        
+       
         PdfPTable table = new PdfPTable(2);
         table.setWidthPercentage(100);
-//        table.setSpacingBefore(5f);
-//        table.setSpacingAfter(5f);
         
-        PdfPCell cell = new PdfPCell(image);        
+        PdfPCell cell = new PdfPCell();        
         cell.setColspan(2);
+        cell.setBorder(Rectangle.NO_BORDER);
+        cell.addElement(image);
         table.addCell(cell);
         document.add(table);
         
@@ -52,8 +55,6 @@ public class PDF implements Format {
         
         table = new PdfPTable(2);
         table.setWidthPercentage(100);
-//        table.setSpacingBefore(5f);
-//        table.setSpacingAfter(5f);
         
         cell = new PdfPCell(new Phrase("Code Name: "));        
         table.addCell(cell);
@@ -68,26 +69,20 @@ public class PDF implements Format {
         
         cell = new PdfPCell(new Phrase("No. of Antennas: "));        
         table.addCell(cell);
-        cell = new PdfPCell(new Phrase(alien.getNoOfAntennas()));        
+        cell = new PdfPCell(new Phrase(Integer.toString(alien.getNoOfAntennas())));        
         table.addCell(cell);
         
         cell = new PdfPCell(new Phrase("No. of Legs: "));        
         table.addCell(cell);
-        cell = new PdfPCell(new Phrase(alien.getNoOfLegs()));        
+        cell = new PdfPCell(new Phrase(Integer.toString(alien.getNoOfLegs())));        
         table.addCell(cell);
         
         cell = new PdfPCell(new Phrase("Home Planet: "));        
         table.addCell(cell);
         cell = new PdfPCell(new Phrase(alien.getHomePlanet()));        
         table.addCell(cell);
-        
         document.add(table);
         
-        
-        
-       
-//        document.add(new Paragraph("Name: "+alien.getName()));
-//        document.add(new Paragraph("Planet: "+alien.getPlanetName()));
         document.close();
         } catch (Exception ex) {
         }
