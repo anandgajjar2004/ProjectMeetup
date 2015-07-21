@@ -18,6 +18,17 @@ import java.util.logging.Logger;
  */
 public class PlainText implements Format {
     
+     public static void main(String args[])
+    {
+        Alien a = new Alien();
+        a.setBloodColor("d");
+        a.setCodeName("d");
+        a.setHomePlanet("s");
+        a.setNoOfAntennas(3);
+        a.setNoOfLegs(3);
+        new PlainText().generate(a);
+    }
+    
     @Override
     public void generate(Alien alien) 
     {
@@ -25,13 +36,13 @@ public class PlainText implements Format {
         {
         PrintWriter writer = new PrintWriter("details.txt", "UTF-8");        
         writer.println("---------------------------------------------------------------------------------");  
-        writer.println("|                                                                               |");
+        writer.println("|\t\t\t\t\t\t\t|");
         writer.println("---------------------------------------------------------------------------------");  
-        writer.println("|\tCode Name\t:  |  \t" + alien.getCodeName()+"      \t\t\t|");
-        writer.println("|\tBlood Color\t:  |  \t" + alien.getBloodColor()+"   \t\t\t|");
-        writer.println("|\tHome Planet\t:  | \t " + alien.getHomePlanet()+"    \t\t\t|");
-        writer.println("|\tNo. of Antennas\t:  |\t  " + alien.getNoOfAntennas()+" \t\t\t|");
-        writer.println("|\tNo. of Legs\t:  |  \t" + alien.getNoOfLegs()+"      \t\t\t|");        
+        writer.println("|\tCode Name\t:  |\t" + alien.getCodeName()+"\t\t\t|");
+        writer.println("|\tBlood Color\t:  |\t" + alien.getBloodColor()+"\t\t\t|");
+        writer.println("|\tHome Planet\t:  |\t " + alien.getHomePlanet()+"\t\t\t|");
+        writer.println("|\tNo. of Antennas\t:  |\t  " + alien.getNoOfAntennas()+"\t\t\t|");
+        writer.println("|\tNo. of Legs\t:  |\t" + alien.getNoOfLegs()+"\t\t\t|");        
         writer.println("---------------------------------------------------------------------------------");  
         writer.close();        
         } catch (FileNotFoundException ex) {
