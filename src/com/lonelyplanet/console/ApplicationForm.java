@@ -18,10 +18,7 @@ public class ApplicationForm {
         new ApplicationForm().startApplication();
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    
+    //this method is starting point. call from main method. this method will intialize assets in future. as of now only welcome message.   
      public void startApplication()
      {
          System.out.println("-----------------------------------------------");
@@ -30,35 +27,51 @@ public class ApplicationForm {
          login();
      }
     
+    /*
+      authenticate user. take username and password as input from console and check weather user is valid or not. 
+      if true then openRegistrationFrom or
+      if fail then ask again to login
+     */
      public void login()
      {        
          scan = new Scanner(System.in);
          
+         
+         //take inupt from the user. 
          System.out.println("Please enter Username: ");         
          String username = scan.nextLine();
          
          System.out.println("Please enter Password: ");         
          String password = scan.nextLine();
          
+         
+         //configured username and password for working flow
          if(username.equals("project") && password.equals("meetup"))
          {
+             //if true then call registration form.
              System.out.println("-----------------------------------------------");
              System.out.println("Successfully Authenticated.");         
              System.out.println("-----------------------------------------------\n");
-             openRegistrationFrom();
+             openRegistrationForm();
          }
          else
          {
+             //if fail then call login method again.
+              System.out.println("-----------------------------------------------");
               System.out.println("Authentication Failed.");         
+              System.out.println("-----------------------------------------------\n");
               login();
          }
      }
          
-    
-     public void openRegistrationFrom() 
+     /*
+      this method will intialize and render form on console screen and ask user to enter alien's data.       
+     */
+     public void openRegistrationForm() 
      {
              System.out.println("\n\nPlease provide below details.");         
              
+             //Create object of alien, take input from user and fill business object
              Alien alien = new Alien();
              System.out.println("Code Name : ");
              alien.setCodeName(scan.nextLine());
@@ -79,6 +92,8 @@ public class ApplicationForm {
              System.out.println("Entry Successfully created.");         
              System.out.println("-----------------------------------------------\n\n");
              
+             
+            //after giving detials. console will promt user to enter choice for export data. 
             System.out.println("Please choose any below option to export data.\n");
             
             System.out.println("Press 1 for PDF format.");
@@ -86,8 +101,8 @@ public class ApplicationForm {
             
             FormatFactory formatFactory = new FormatFactory();
             
-            
             String option = scan.nextLine();
+            //based on user's choice, call getFormat method and pass option. 
             if(option.equals("1"))
             {
                 Format format = formatFactory.getFormat(option);
@@ -115,7 +130,8 @@ public class ApplicationForm {
              }
              else
              {
-                 openRegistrationFrom();
+                 //if user wants to coninue then call openRegistrationForm() method again. 
+                 openRegistrationForm();
              }
          }
     }
