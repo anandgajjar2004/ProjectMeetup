@@ -1,1 +1,0 @@
-Java -jar Alien.jar
