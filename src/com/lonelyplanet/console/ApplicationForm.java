@@ -1,9 +1,12 @@
 package com.lonelyplanet.console;
 
+import com.lonelyplanet.exception.CustomException;
 import com.lonelyplanet.pojo.Alien;
 import com.lonelyplanet.export.details.Format;
 import com.lonelyplanet.export.details.FormatFactory;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,11 +18,15 @@ public class ApplicationForm {
     
     public static void main(String args[])
     {
-        new ApplicationForm().startApplication();
+        try {
+            new ApplicationForm().startApplication();
+        } catch (CustomException ex) {
+            Logger.getLogger(ApplicationForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     //this method is starting point. call from main method. this method will intialize assets in future. as of now only welcome message.   
-     public void startApplication()
+     public void startApplication() throws CustomException
      {
          System.out.println("-----------------------------------------------");
          System.out.println("Welcome to Project Meetup.");
@@ -32,7 +39,7 @@ public class ApplicationForm {
       if true then openRegistrationFrom or
       if fail then ask again to login
      */
-     public void login()
+     public void login() throws CustomException
      {        
          scan = new Scanner(System.in);
          
@@ -67,7 +74,7 @@ public class ApplicationForm {
      /*
       this method will intialize and render form on console screen and ask user to enter alien's data.       
      */
-     public void openRegistrationForm() 
+     public void openRegistrationForm() throws CustomException 
      {
              System.out.println("\n\nPlease provide below details.");         
              
