@@ -1,28 +1,38 @@
 package com.lonelyplanet.console;
 
 import com.lonelyplanet.pojo.Alien;
-import com.itextpdf.text.DocumentException;
 import com.lonelyplanet.export.details.Format;
 import com.lonelyplanet.export.details.FormatFactory;
-import com.lonelyplanet.export.details.PDF;
-import java.io.IOException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Anand Gajjar
  */
 public class ApplicationForm {
+    
+    Scanner scan;
+    
+    public static void main(String args[])
+    {
+        new ApplicationForm().startApplication();
+    }
 
     /**
      * @param args the command line arguments
      */
-     public static void main(String[] args) 
+    
+     public void startApplication()
      {
+         System.out.println("-----------------------------------------------");
          System.out.println("Welcome to Project Meetup.");
-         Scanner scan = new Scanner(System.in);
+         System.out.println("-----------------------------------------------");
+         login();
+     }
+    
+     public void login()
+     {        
+         scan = new Scanner(System.in);
          
          System.out.println("Please enter Username: ");         
          String username = scan.nextLine();
@@ -32,8 +42,22 @@ public class ApplicationForm {
          
          if(username.equals("project") && password.equals("meetup"))
          {
+             System.out.println("-----------------------------------------------");
              System.out.println("Successfully Authenticated.");         
-             System.out.println("Please provide below details.");         
+             System.out.println("-----------------------------------------------\n");
+             openRegistrationFrom();
+         }
+         else
+         {
+              System.out.println("Authentication Failed.");         
+              login();
+         }
+     }
+         
+    
+     public void openRegistrationFrom() 
+     {
+             System.out.println("\n\nPlease provide below details.");         
              
              Alien alien = new Alien();
              System.out.println("Code Name : ");
@@ -51,8 +75,11 @@ public class ApplicationForm {
              System.out.println("Home Planet : ");
              alien.setHomePlanet(scan.nextLine());
              
-            System.out.println("Entry Successfully created.");         
-            System.out.println("Please choose any below option to export data.");
+             System.out.println("-----------------------------------------------");
+             System.out.println("Entry Successfully created.");         
+             System.out.println("-----------------------------------------------\n\n");
+             
+            System.out.println("Please choose any below option to export data.\n");
             
             System.out.println("Press 1 for PDF format.");
             System.out.println("Press 2 for Plain Text format.");
@@ -71,13 +98,24 @@ public class ApplicationForm {
                 Format format = formatFactory.getFormat(option);
                 format.generate(alien);
             }
+            
+             System.out.println("-----------------------------------------------");
+             System.out.println("Data Exported Successfully in Current Directory.");         
+             System.out.println("-----------------------------------------------\n\n");
+             
+             System.out.println("You wan to continue or exit ?\n");
+            
+             System.out.println("Press 1 for Exit.");
+             System.out.println("Press 2 for Continue.");
+             option = scan.nextLine();
+             
+             if(option.equals("1"))
+             {
+                 System.exit(0);
+             }
+             else
+             {
+                 openRegistrationFrom();
+             }
          }
-         else 
-         {
-            System.out.println("Authentication Failed.");             
-         }
-        
-        
     }
-    
-}
