@@ -1,6 +1,7 @@
 package com.lonelyplanet.export.details;
 
 import com.lonelyplanet.pojo.Alien;
+import com.lonelyplanet.exception.CustomException;
 
 /**
  * @author Anand Gajjar
@@ -9,6 +10,6 @@ import com.lonelyplanet.pojo.Alien;
  */
 public interface Format {
     
-    void generate(Alien alien);
+    void generate(Alien alien) throws CustomException;
     
 }

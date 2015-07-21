@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.lonelyplanet.export.details;
 
 import com.lonelyplanet.pojo.Alien;
+import com.lonelyplanet.exception.CustomException;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -18,19 +14,8 @@ import java.util.logging.Logger;
  */
 public class PlainText implements Format {
     
-     public static void main(String args[])
-    {
-        Alien a = new Alien();
-        a.setBloodColor("d");
-        a.setCodeName("d");
-        a.setHomePlanet("s");
-        a.setNoOfAntennas(3);
-        a.setNoOfLegs(3);
-        new PlainText().generate(a);
-    }
-    
     @Override
-    public void generate(Alien alien) 
+    public void generate(Alien alien) throws CustomException 
     {
         try 
         {
@@ -45,10 +30,8 @@ public class PlainText implements Format {
         writer.println("|\tNo. of Legs\t:  |\t" + alien.getNoOfLegs()+"\t\t\t|");        
         writer.println("---------------------------------------------------------------------------------");  
         writer.close();        
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(PlainText.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(PlainText.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+             throw new CustomException("There is some issue with PDF generate process. please contact to admin.");
         }
     }
     

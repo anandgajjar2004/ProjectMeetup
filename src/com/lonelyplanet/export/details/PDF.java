@@ -11,23 +11,13 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.lonelyplanet.pojo.Alien;
+import com.lonelyplanet.exception.CustomException;
 import java.io.File;
  
 public class PDF implements Format {
     
-    public static void main(String args[])
-    {
-        Alien a = new Alien();
-        a.setBloodColor("d");
-        a.setCodeName("d");
-        a.setHomePlanet("s");
-        a.setNoOfAntennas(3);
-        a.setNoOfLegs(3);
-        new PDF().generate(a);
-    }
-    
     @Override
-    public void generate(Alien alien)  {
+    public void generate(Alien alien) throws CustomException  {
     {
         try 
         {
@@ -84,7 +74,8 @@ public class PDF implements Format {
         document.add(table);
         
         document.close();
-        } catch (Exception ex) {
+        } catch (Exception ex) {            
+            throw new CustomException("There is some issue with PDF generate process. please contact to admin.");
         }
     }
 }
