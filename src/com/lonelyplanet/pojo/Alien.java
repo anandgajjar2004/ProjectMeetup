@@ -9,8 +9,19 @@ public class Alien {
     private String codeName;
     private String bloodColor;
     private String homePlanet;
-    private int NoOfAntennas;
+    private int noOfAntennas;
     private int noOfLegs;
+    private int noOfEyes;
+    private int noOfNose;
+    private int noOfDays;
+
+    public int getNoOfDays() {
+        return noOfDays;
+    }
+
+    public void setNoOfDays(int noOfDays) {
+        this.noOfDays = noOfDays;
+    }
 
     public String getCodeName() {
         return codeName;
@@ -37,11 +48,11 @@ public class Alien {
     }
 
     public int getNoOfAntennas() {
-        return NoOfAntennas;
+        return noOfAntennas;
     }
 
-    public void setNoOfAntennas(int NoOfAntennas) {
-        this.NoOfAntennas = NoOfAntennas;
+    public void setNoOfAntennas(int noOfAntennas) {
+        this.noOfAntennas = noOfAntennas;
     }
 
     public int getNoOfLegs() {
@@ -51,10 +62,23 @@ public class Alien {
     public void setNoOfLegs(int noOfLegs) {
         this.noOfLegs = noOfLegs;
     }
-    
-    
-    
-    
-    
 
+    public int getNoOfEyes() {
+        return noOfEyes;
+    }
+
+    public void setNoOfEyes(int noOfEyes) {
+        this.noOfEyes = noOfEyes;
+    }
+
+    public int getNoOfNose() {
+        return noOfNose;
+    }
+
+    public void setNoOfNose(int noOfNose) {
+        this.noOfNose = noOfNose;
+    }
+    
+    
+    
 }
