@@ -48,7 +48,7 @@ public class ApplicationForm {
          System.out.println("Please enter Username: ");         
          String username = scan.nextLine();
          
-         System.out.println("Please enter Password: ");         
+         System.out.println("\nPlease enter Password: ");         
          String password = scan.nextLine();
          
          
@@ -56,7 +56,7 @@ public class ApplicationForm {
          if(username.equals("project") && password.equals("meetup"))
          {
              //if true then call registration form.
-             System.out.println("-----------------------------------------------");
+             System.out.println("\n-----------------------------------------------");
              System.out.println("Successfully Authenticated.");         
              System.out.println("-----------------------------------------------\n");
              openRegistrationForm();
@@ -64,7 +64,7 @@ public class ApplicationForm {
          else
          {
              //if fail then call login method again.
-              System.out.println("-----------------------------------------------");
+              System.out.println("\n-----------------------------------------------");
               System.out.println("Authentication Failed.");         
               System.out.println("-----------------------------------------------\n");
               login();
@@ -80,28 +80,37 @@ public class ApplicationForm {
              
              //Create object of alien, take input from user and fill business object
              Alien alien = new Alien();
-             System.out.println("Code Name : ");
+             System.out.println("\nCode Name : ");
              alien.setCodeName(scan.nextLine());
              
-             System.out.println("Blood Color : ");
+             System.out.println("\nBlood Color : ");
              alien.setBloodColor(scan.nextLine());
              
-             System.out.println("No. of Antennas : ");
+             System.out.println("\nNo. of Antennas : ");
              alien.setNoOfAntennas(Integer.parseInt(scan.nextLine()));
              
-             System.out.println("No. of Legs : ");
+             System.out.println("\nNo. of Legs : ");
              alien.setNoOfLegs(Integer.parseInt(scan.nextLine()));
              
-             System.out.println("Home Planet : ");
+             System.out.println("\nNo. of Nose : ");
+             alien.setNoOfNose(Integer.parseInt(scan.nextLine()));
+             
+             System.out.println("\nNo. of Eyes : ");
+             alien.setNoOfEyes(Integer.parseInt(scan.nextLine()));
+             
+             System.out.println("\nHome Planet : ");
              alien.setHomePlanet(scan.nextLine());
              
-             System.out.println("-----------------------------------------------");
+             System.out.println("\nFor how many days?");
+             alien.setNoOfDays(Integer.parseInt(scan.nextLine()));
+             
+             System.out.println("\n-----------------------------------------------");
              System.out.println("Entry Successfully created.");         
              System.out.println("-----------------------------------------------\n\n");
              
              
             //after giving detials. console will promt user to enter choice for export data. 
-            System.out.println("Please choose any below option to export data.\n");
+            System.out.println("\nPlease choose any below option to export data.\n");
             
             System.out.println("Press 1 for PDF format.");
             System.out.println("Press 2 for Plain Text format.");
@@ -121,11 +130,11 @@ public class ApplicationForm {
                 format.generate(alien);
             }
             
-             System.out.println("-----------------------------------------------");
+             System.out.println("\n-----------------------------------------------");
              System.out.println("Data Exported Successfully in Current Directory.");         
              System.out.println("-----------------------------------------------\n\n");
              
-             System.out.println("You wan to continue or exit ?\n");
+             System.out.println("\nYou wan to continue or exit ?\n");
             
              System.out.println("Press 1 for Exit.");
              System.out.println("Press 2 for Continue.");
