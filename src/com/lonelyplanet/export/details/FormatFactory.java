@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.lonelyplanet.export.details;
 
 /**
  *
  * @author Anand Gajjar
+ * FormatFactory class is to take input from user and based on selection create instance of PDF or Plain Text or etc..
  */
 public class FormatFactory {
     
@@ -16,14 +12,15 @@ public class FormatFactory {
       if(shapeType == null){
          return null;
       }		
+      
+      //if user pass  choice 1 then create instance of PDF
       if(shapeType.equalsIgnoreCase("1")){
          return new PDF();
          
+       //if user pass  choice 2 then create instance of Plain Text
       } else if(shapeType.equalsIgnoreCase("2")){
          return new PlainText();
-         
       }
-      
       return null;
    }
 }
