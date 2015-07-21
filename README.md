@@ -17,7 +17,9 @@ for Windows system.
  variable value: C:\Program Files (x86)\Java\jre1.8.0_20\bin;
 
 
-To run the project from the command line, go to the dist folder and
+To run the project from the command line, go to the foobar folder and
 type the following:
 
-java -jar "Alien.jar" 
+java -jar "ProjectMeetup.jar" 
+
+or directly run ProjectMeetup.bat file for windows system. 
