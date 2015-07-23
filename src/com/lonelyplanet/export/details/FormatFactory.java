@@ -1,5 +1,7 @@
 package com.lonelyplanet.export.details;
 
+import com.lonelyplanet.exception.CustomException;
+
 /**
  *
  * @author Anand Gajjar
@@ -7,21 +9,21 @@ package com.lonelyplanet.export.details;
  */
 public class FormatFactory {
     
-      //use getShape method to get object of type shape 
-   public Format getFormat(String exportType){
-      if(exportType == null){
-         return null;
-      }		
-      
-      //if user pass  choice 1 then create instance of PDF
-      if(exportType.equalsIgnoreCase("1")){
-         return new PDF();
-         
-       //if user pass  choice 2 then create instance of Plain Text
-      } else if(exportType.equalsIgnoreCase("2")){
-         return new PlainText();
-      }
-      return null;
+    //get current package name;
+    //value = com.lonelyplanet.export.details
+    private String packageName = Format.class.getPackage().getName();
+    
+   //use getFormat method to get object of type shape 
+   public Format getFormat(String className) throws CustomException
+   {       
+       Format foramt = null;       
+       try {
+       //get class name dynamically from UI and create an instance of it. 
+       foramt = (Format)Class.forName(packageName+"."+className).newInstance();
+       } catch (Exception ex) {
+           throw new CustomException("Given class not found in database. ");
+       }
+       return foramt;
    }
 }
    
