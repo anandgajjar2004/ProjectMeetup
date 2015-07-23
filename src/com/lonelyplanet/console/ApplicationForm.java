@@ -4,9 +4,13 @@ import com.lonelyplanet.exception.CustomException;
 import com.lonelyplanet.pojo.Alien;
 import com.lonelyplanet.export.details.Format;
 import com.lonelyplanet.export.details.FormatFactory;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import net.sourceforge.stripes.util.ResolverUtil;
 
 /**
  *
@@ -24,7 +28,7 @@ public class ApplicationForm {
             Logger.getLogger(ApplicationForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     //this method is starting point. call from main method. this method will intialize assets in future. as of now only welcome message.   
      public void startApplication() throws CustomException
      {
@@ -110,15 +114,19 @@ public class ApplicationForm {
              
              
             //after giving detials. console will promt user to enter choice for export data. 
-            System.out.println("\nPlease Type Format name to export data.\n");
+            System.out.println("\nPlease choose any below option to export data.\n");
             
-            
+            Map<Integer, String> classCollection = FormatFactory.getImplementedClasses();
+            for (Map.Entry<Integer,String> entry : classCollection.entrySet()) 
+            {
+                System.out.println("type "+entry.getKey()+" for "+entry.getValue()+" format.");
+            }
             
             FormatFactory formatFactory = new FormatFactory();
             
             String option = scan.nextLine();
             //based on user's choice, call getFormat method and pass option. 
-            Format format = formatFactory.getFormat(option);
+            Format format = formatFactory.getFormat(Integer.parseInt(option));
             format.generate(alien);
             
              System.out.println("\n-----------------------------------------------");
