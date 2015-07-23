@@ -112,23 +112,15 @@ public class ApplicationForm {
             //after giving detials. console will promt user to enter choice for export data. 
             System.out.println("\nPlease choose any below option to export data.\n");
             
-            System.out.println("Press 1 for PDF format.");
-            System.out.println("Press 2 for Plain Text format.");
+            System.out.println("type PDF for PDF format.");
+            System.out.println("type PlainText for Plain Text format.");
             
             FormatFactory formatFactory = new FormatFactory();
             
             String option = scan.nextLine();
             //based on user's choice, call getFormat method and pass option. 
-            if(option.equals("1"))
-            {
-                Format format = formatFactory.getFormat(option);
-                format.generate(alien);
-            }
-            if(option.equals("2"))
-            {
-                Format format = formatFactory.getFormat(option);
-                format.generate(alien);
-            }
+            Format format = formatFactory.getFormat(option);
+            format.generate(alien);
             
              System.out.println("\n-----------------------------------------------");
              System.out.println("Data Exported Successfully in Current Directory.");         
