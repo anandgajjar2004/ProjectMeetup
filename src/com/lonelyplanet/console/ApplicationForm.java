@@ -110,10 +110,9 @@ public class ApplicationForm {
              
              
             //after giving detials. console will promt user to enter choice for export data. 
-            System.out.println("\nPlease choose any below option to export data.\n");
+            System.out.println("\nPlease Type Format name to export data.\n");
             
-            System.out.println("type PDF for PDF format.");
-            System.out.println("type PlainText for Plain Text format.");
+            
             
             FormatFactory formatFactory = new FormatFactory();
             
